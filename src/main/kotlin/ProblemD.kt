@@ -1,24 +1,27 @@
 class ProblemD {
 
+    private fun findMaxProfit(coins: LongArray, numbersOfClients: Int) {
+
+        var maxProfit = 0L
+
+        coins.sort()
+        for (j in 0 until numbersOfClients) {
+            if (maxProfit < coins[j] * (numbersOfClients - j))
+                maxProfit = coins[j] * (numbersOfClients - j)
+        }
+        println(maxProfit)
+    }
+
     fun main() {
+
+        var numberOfClients: Int
+        var coins: LongArray
         val t = readInt()
-        val numbersOfClients = IntArray(t)
-        val coins = Array(t) { LongArray(0) }
-        val profits = LongArray(t)
 
         for (i in 0 until t) {
-            numbersOfClients[i] = readInt()
-            coins[i] = readLongArray(numbersOfClients[i])
-            coins[i].sort()
+            numberOfClients = readInt()
+            coins = readLongArray(numberOfClients)
+            findMaxProfit(coins, numberOfClients)
         }
-
-        for (i in 0 until t) {
-            for (j in 0 until numbersOfClients[i]) {
-                if (profits[i] < coins[i][j] * (numbersOfClients[i] - j))
-                    profits[i] = coins[i][j] * (numbersOfClients[i] - j)
-            }
-        }
-
-        for (item in profits) println(item)
     }
 }

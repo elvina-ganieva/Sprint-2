@@ -1,22 +1,25 @@
 class ProblemB {
 
+    private fun findUniformString(stringLength: Int, numberOfChars: Int) {
+
+        val fullSet = stringLength / numberOfChars
+        val remainder = stringLength % numberOfChars
+
+        for (j in 0 until numberOfChars) {
+            for (k in 1..fullSet) print('a' + j)
+        }
+        for (k in 0 until remainder) print('a' + k)
+        println()
+    }
+
     fun main() {
-        var fullSet: Int
-        var remainder: Int
 
+        var input: IntArray
         val t = readInt()
-        val input = Array(t) { IntArray(2) }
 
-        for (i in 0 until t) input[i] = readIntArray(2)
-
-        for (array in input) {
-            fullSet = array[0] / array[1]
-            remainder = array[0] % array[1]
-            for (j in 0 until array[1]) {
-                for (k in 1..fullSet) print('a' + j)
-            }
-            for (k in 0 until remainder) print('a' + k)
-            println()
+        for (i in 0 until t) {
+            input = readIntArray(2)
+            findUniformString(input[0], input[1])
         }
     }
 }
